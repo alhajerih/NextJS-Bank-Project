@@ -18,6 +18,7 @@ async function Navbar() {
           <div className="block">
             <div className="ml-10 flex items-baseline space-x-4">
               <NavLink href="/">Home</NavLink>
+              <NavLink href="/transactions">Transactions</NavLink>
               <NavLink href="/profile">Profile</NavLink>
               <NavLink href="/users">Users</NavLink>
               <AuthButtons />

@@ -8,6 +8,7 @@ async function getHeaders() {
 
   headers.append(`Content-Type`, `application/json`);
   headers.append("Authorization", `Bearer ${token}`);
+  console.log("Headers:", headers);
   return headers;
 }
 export { getHeaders, baseUrl };

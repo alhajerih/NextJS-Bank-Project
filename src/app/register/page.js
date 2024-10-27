@@ -2,7 +2,7 @@
 import { register } from "@/api/actions/auth";
 import Input from "@/components/Input";
 import React, { useState } from "react";
-
+// register page
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

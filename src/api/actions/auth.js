@@ -41,6 +41,9 @@ export async function logout() {
   redirect(`/`);
 }
 
+{
+  /* Responsible to get all users and list them in users page */
+}
 export async function getAllUsers() {
   const response = await fetch(`${baseUrl}/auth/users`, {
     method: "GET",
@@ -50,14 +53,29 @@ export async function getAllUsers() {
   const users = await response.json();
   return users;
 }
+
+{
+  /* Responsible to get userId Note=>> still working on it */
+}
 export async function getUserById(userId) {
   const response = await fetch(`${baseUrl}/auth/user/${userId}`, {
     method: "GET",
-    headers: getHeaders(),
+    headers: await getHeaders(),
   });
-  return await response.json();
+
+  if (!response.ok) {
+    console.error(`Error fetching user: ${response.statusText}`);
+    return null;
+  }
+
+  const data = await response.json();
+  console.log("Response data from API:", data); // Check the data structure here
+  return data.user || data;
 }
 
+{
+  /* Responsible to get profile*/
+}
 export async function getProfile() {
   const response = await fetch(`${baseUrl}/auth/me`, {
     method: "GET",
@@ -69,6 +87,9 @@ export async function getProfile() {
   return data;
 }
 
+{
+  /* Responsible to update the user profile image */
+}
 export async function updateProfile(image) {
   const formData = new FormData();
   formData.append("image", image);
@@ -85,4 +106,17 @@ export async function updateProfile(image) {
 
   const updatedUser = await response.json();
   return updatedUser;
+}
+
+{
+  /* Responsible to get user(me) transactions */
+}
+export async function myTransactions() {
+  const headers = await getHeaders();
+  const response = await fetch(`${baseUrl}/transactions/my`, {
+    method: "GET",
+    headers: headers,
+  });
+
+  return await response.json();
 }

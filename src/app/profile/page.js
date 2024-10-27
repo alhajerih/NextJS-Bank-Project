@@ -1,7 +1,7 @@
 import { getProfile } from "@/api/actions/auth";
 import ProfileCard from "@/components/MeProfile/ProfileCard";
 import React from "react";
-
+//Profile page
 export default async function UserProfile() {
   const user = await getProfile();
   return (
